@@ -10,7 +10,8 @@ import { CadastroFuncionarioComponent } from './cadastro-funcionario/cadastro-fu
 import { ConsultaFuncionarioComponent } from './consulta-funcionario/consulta-funcionario.component';
 import { ConsultaClienteComponent } from './consulta-cliente/consulta-cliente.component';
 import {RouterModule, Routes} from '@angular/router';
-import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.component'
+import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.component';
+import { CadastroEnderecoComponent } from './cadastro-endereco/cadastro-endereco.component'
 
 
 const appRoutes: Routes= [
@@ -32,7 +33,8 @@ const appRoutes: Routes= [
     CadastroFuncionarioComponent,
     ConsultaFuncionarioComponent,
     ConsultaClienteComponent,
-    CadastroProdutoComponent
+    CadastroProdutoComponent,
+    CadastroEnderecoComponent
   ],
   imports: [
     BrowserModule,
