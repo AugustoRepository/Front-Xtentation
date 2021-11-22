@@ -1,17 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">XStation</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <!--If is Authorize ; get nomeUsu e disamble nesses li-->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="cadastro-cliente">Crie sua Conta</a>
+          <a class="nav-link active" aria-current="page"
+           href="cadastro-cliente" [hidden]="usuarioAutenticao">Crie sua Conta</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login-cliente">Entre</a>
+          <a class="nav-link" href="login-cliente" [hidden]="usuarioAutenticao">Entre</a>
         </li>
         <!--Fazer um *ngif = "tipoAcesso = 3 ; dropdown disamble" para com tipo de usuario-->
         
@@ -20,10 +23,15 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+      <div  >
+        <button class="btn btn-primary"  [hidden]="!usuarioAutenticao" (click)="logout()" >
+           logoff
+      </button>
+      </div>
     </div>
   </div>
   </nav>
-  <div class="container mt-3">
+  <div class="container mt-4">
     <h5>Bem vindo ao passado compre seus retros aqui.</h5>
     <hr/>
     <h1> select de produtos      

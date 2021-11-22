@@ -29,7 +29,7 @@ export class LoginFuncionarioComponent implements OnInit {
         (data: any) => {
           window.localStorage.setItem("ACCESS_TOKEN", data.accessToken);
             console.log(data.accessToken);
-          window.location.href = "/#";
+          window.location.href = "/home-funcionario";
         },
         (e: any) => {
           switch (e.status) {

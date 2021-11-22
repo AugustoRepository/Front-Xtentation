@@ -44,7 +44,9 @@ export class CadastroFuncionarioComponent implements OnInit {
       {responseType: "text"}).subscribe(
         (data) => {
           this.mensagemSucesso = data;
+
           formCadastroFun.form.reset();
+          window.location.href = "/login-funcionario";
         },
         (e) =>{
           switch(e.status){

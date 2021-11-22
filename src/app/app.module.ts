@@ -16,6 +16,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeFuncionarioComponent } from './home-funcionario/home-funcionario.component';
 import { HomeClienteComponent } from './home-cliente/home-cliente.component';
+import { GerenciarProdutosComponent } from './gerenciar-produtos/gerenciar-produtos.component';
+import { GerenciarClientesComponent } from './gerenciar-clientes/gerenciar-clientes.component';
+import { GerenciarComprasComponent } from './gerenciar-compras/gerenciar-compras.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { ComprasComponent } from './compras/compras.component';
 
 
 const appRoutes: Routes= [
@@ -25,7 +30,8 @@ const appRoutes: Routes= [
   {path : 'cadastro-funcionario', component : CadastroFuncionarioComponent},
   {path : 'cadastro-produto', component : CadastroProdutoComponent},
   {path : 'consulta-funcionario', component : ConsultaFuncionarioComponent},
-  {path : 'login-funcionario', component : LoginFuncionarioComponent}
+  {path : 'login-funcionario', component : LoginFuncionarioComponent},
+  {path : 'home-funcionario', component : HomeFuncionarioComponent}
 ]
 
 @NgModule({
@@ -40,7 +46,12 @@ const appRoutes: Routes= [
     CadastroProdutoComponent,
     CadastroEnderecoComponent,
     HomeFuncionarioComponent,
-    HomeClienteComponent
+    HomeClienteComponent,
+    GerenciarProdutosComponent,
+    GerenciarClientesComponent,
+    GerenciarComprasComponent,
+    CarrinhoComponent,
+    ComprasComponent
   ],
   imports: [
     BrowserModule,
