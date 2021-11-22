@@ -12,6 +12,10 @@ import { ConsultaClienteComponent } from './consulta-cliente/consulta-cliente.co
 import {RouterModule, Routes} from '@angular/router';
 import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.component';
 import { CadastroEnderecoComponent } from './cadastro-endereco/cadastro-endereco.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeFuncionarioComponent } from './home-funcionario/home-funcionario.component';
+import { HomeClienteComponent } from './home-cliente/home-cliente.component';
 
 
 const appRoutes: Routes= [
@@ -34,12 +38,17 @@ const appRoutes: Routes= [
     ConsultaFuncionarioComponent,
     ConsultaClienteComponent,
     CadastroProdutoComponent,
-    CadastroEnderecoComponent
+    CadastroEnderecoComponent,
+    HomeFuncionarioComponent,
+    HomeClienteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
     
   ],
   providers: [],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import{HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cadastro-funcionario',
@@ -7,37 +8,68 @@ import{HttpClient} from '@angular/common/http';
   styleUrls: ['./cadastro-funcionario.component.css']
 })
 export class CadastroFuncionarioComponent implements OnInit {
+
   mensagemSucesso: string | undefined;
   mensagemErro: string | undefined;
 
-  constructor(private httpClient :HttpClient ){ }
+  errosNome = [];
+  errosEmail = [];
+  errosSenha = [];
+  errosSenhaConfirmacao = [];
+  errosTelefone = [];
+  errosTelefone2 = [];
+  errosDataNascimento = [];
+  errosIdPerfil = [];
+
+  ListagemPerfis: any
+
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+    this.httpClient.get(environment.apiUrl + "/perfil")
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.ListagemPerfis = data;
+        },
+        (e: any) => {
+          console.log(e);
+        }
+      )
+  }
+  cadastrarFuncionario(formCadastroFun :any): void {    
+
+      console.log(formCadastroFun.form.value);
+      this.httpClient.post(environment.apiUrl + "/funcionario", formCadastroFun.form.value,
+      {responseType: "text"}).subscribe(
+        (data) => {
+          this.mensagemSucesso = data;
+          formCadastroFun.form.reset();
+        },
+        (e) =>{
+          switch(e.status){
+            case 400:
+              var result = JSON.parse(e.error);
+              var mensagas = result.errors;
+
+              this.errosNome = mensagas.Nome;
+              this.errosEmail = mensagas.Email;
+              this.errosSenha = mensagas.Senha;
+              this.errosSenhaConfirmacao = mensagas.SenhaConfirmacao;
+              this.errosTelefone = mensagas.Telefone;
+              this.errosTelefone2 = mensagas.Telefone2;
+              this.errosDataNascimento = mensagas.DataNascimento;
+              break;
+              case 500:
+                this.mensagemErro = e.error;
+                break;
+          }
+        })
   }
 
-  
-  cadastrarFuncionario(formCadastro : {form: {valeu: any;};}) : void {
+  fecharMensasgens() :void{
     this.mensagemSucesso = "";
     this.mensagemErro = "";
-
-    console.log(formCadastro.form.valeu);
-
-    this.httpClient.post('http://localhost:12429/api/Funcionario', formCadastro.form.valeu, {responseType : 'text'})
-    .subscribe(success =>{
-      this.mensagemSucesso = success;
-    },
-    e=>{
-      this.mensagemErro = "Ocorreram erros, tente novamente";
-    });
   }
-  
-  fecharMensagemSucesso() : void{
-    this.mensagemSucesso = "";
-  }
-
-  fecharMensagemErro() : void{
-    this.mensagemErro = "";
-  }
-  
 }
 

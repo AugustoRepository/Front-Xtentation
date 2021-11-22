@@ -2,43 +2,61 @@
 
 <br />
 
-<form>
+<form #formCadastroFun ="ngForm" (submit)="cadastrarFuncionario(formCadastroFun)">
     <div class="row">
         <div class="col-md-4">
             <label>Email:</label>
-            <input type="text" class="form-control" placeholder="Digite aqui">
+            <input type="text" class="form-control" placeholder="Digite aqui" name="email" ngModel>
             <br />
             <label>Senha:</label>
-            <input type="text" class="form-control" placeholder="Digite aqui">
+            <input type="text" class="form-control" placeholder="Digite aqui" name="senha" ngModel>
             <br />
             <label>Confirme a senha:</label>
-            <input type="text" class="form-control" placeholder="Digite aqui">
+            <input type="text" class="form-control" placeholder="Digite aqui"  name="confirmaSenha" ngModel>
             <br />
             <label>Nome:</label>
-            <input type="text" class="form-control" placeholder="Digite aqui">
+            <input type="text" class="form-control" placeholder="Digite aqui" name="nome" ngModel>
             <br />
             <label>Cpf:</label>
-            <input type="text" class="form-control" placeholder="Digite aqui">
+            <input type="text" class="form-control" placeholder="Digite aqui" name="cpf" ngModel>
             <br />
             <label>Telefone:</label>
-            <input type="text" class="form-control" placeholder="Digite aqui">
+            <input type="text" class="form-control" placeholder="Digite aqui" name="telefone1" ngModel>
             <br />
-            <label>Data de Nascimento:</label>
-            <input type="text" class="form-control" placeholder="Digite aqui">
-            <br />
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Tipo acesso</option>
-                <option value="1">Adm</option>
-                <option value="2">Funcionario</option>
-                <option value="3">Cliente</option>
-            </select>
+            <label>telefone2:</label>
+            <input type="text" class="form-control" placeholder="Digite aqui" name="telefone2" ngModel>            
+                    
+        </div>
+    </div>
 
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Data de Nascimento:</label>
+            <input type="date" class="form-control" placeholder="Digite aqui" name="datanascimento"ngModel>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">            
+            <label>Selecione o Perfil do Usuario:</label>
+            <select class="form-control" name="idPerfil" ngModel>                
+                <option value="">Escolha uma Opcao</option>
+                <option  *ngFor="let item of ListagemPerfis"
+                value="{{item.idPerfil}}">{{item.nome}}</option>                
+            </select>          
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
             <button class="btn btn-success btn-sm mr-1" type="submit">
-                Cadastrar Produto
+                Cadastrar funcionario
             </button>
-            <button class="btn btn-secondary btn-sm mr-1" type="reset">
+
+            <button class="btn btn-secondary btn-sm mr-2 " type="reset">
                 Limpar Campos
             </button>
         </div>
     </div>
+
 </form>
